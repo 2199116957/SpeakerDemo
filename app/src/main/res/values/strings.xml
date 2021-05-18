@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SpeakerDemo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_app_Home">首页</string>
+    <string name="main_app_news">更多</string>
+    <string name="main_app_more">消息</string>
+    <string name="main_app_Curriculum">课程</string>
+    <string name="main_app_Me">我的</string>
+
+</resources>
