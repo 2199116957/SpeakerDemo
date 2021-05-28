@@ -7,8 +7,9 @@
     tools:context=".fragment.more.MoreFragment">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/more_toolbar"
         android:layout_width="match_parent"
-        android:background="@color/white"
+        android:background="@color/purple_200"
         android:layout_height="wrap_content">
 
         <TextView
@@ -16,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:text="更多"
+            android:text="消息"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 

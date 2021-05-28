@@ -1,9 +1,14 @@
 package com.example.speakerdemo;
 
+import android.Manifest;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.security.identity.NoAuthenticationKeyAvailableException;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,7 +17,12 @@ import com.example.speakerdemo.fragment.home.HomeFragment;
 import com.example.speakerdemo.fragment.me.MeFragment;
 import com.example.speakerdemo.fragment.more.MoreFragment;
 import com.example.speakerdemo.fragment.news.NewsFragment;
+import com.example.speakerdemo.utils.FullScreenUtil;
+import com.example.speakerdemo.utils.PermissionsUtils;
+import com.example.speakerdemo.utils.RxToast;
 import com.google.android.material.tabs.TabLayout;
+import com.gyf.immersionbar.ImmersionBar;
+
 public class MainActivity extends AppCompatActivity {
 
     private FrameLayout fragmentMain;
@@ -23,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        RxToast.setContext(this);
+        ImmersionBar.with(this).fitsSystemWindows(true).statusBarColor(R.color.white).autoStatusBarDarkModeEnable(true,0.2f).init();
         initView();
     }
+
+
     /*
     *设置页面切换
     * */
@@ -61,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         //添加TabLayout选择器和文字
         tablayoutMain.addTab(tablayoutMain.newTab().setText(R.string.main_app_Home).setIcon(R.drawable.main_tablayout_home_select));
         tablayoutMain.addTab(tablayoutMain.newTab().setText(R.string.main_app_Curriculum).setIcon(R.drawable.main_tablayout_curriculum_select));
-        tablayoutMain.addTab(tablayoutMain.newTab().setText(R.string.main_app_news).setIcon(R.drawable.main_tablayout_news_select));
+        tablayoutMain.addTab(tablayoutMain.newTab().setIcon(R.drawable.main_tablayout_news_select));
         tablayoutMain.addTab(tablayoutMain.newTab().setText(R.string.main_app_more).setIcon(R.drawable.main_tablayout_more_select));
         tablayoutMain.addTab(tablayoutMain.newTab().setText(R.string.main_app_Me).setIcon(R.drawable.main_tablayout_me_select));
         tablayoutMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -70,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 //根据TabLayout切换页面，show显示当前fragment，hide隐藏fragment
                 switch (tab.getPosition()) {
                     case 0:
+                        ImmersionBar.with(MainActivity.this).fitsSystemWindows(true)
+                                .statusBarColor(R.color.white).autoStatusBarDarkModeEnable(true,0.2f).init();
                         supportFragmentManager.beginTransaction()
                                 .show(homeFragment)
                                 .hide(curriculumFragment)
@@ -79,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         break;
                     case 1:
+                        ImmersionBar.with(MainActivity.this).fitsSystemWindows(true)
+                                .statusBarColor(R.color.Blue).autoStatusBarDarkModeEnable(true,0.2f).init();
                         supportFragmentManager.beginTransaction()
                                 .show(curriculumFragment)
                                 .hide(homeFragment)
@@ -88,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         break;
                     case 2:
+                        ImmersionBar.with(MainActivity.this).fitsSystemWindows(true)
+                                .statusBarColor(R.color.Blue).autoStatusBarDarkModeEnable(true,0.2f).init();
                         supportFragmentManager.beginTransaction()
                                 .show(newsFragment)
                                 .hide(curriculumFragment)
@@ -97,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         break;
                     case 3:
+                        ImmersionBar.with(MainActivity.this).fitsSystemWindows(true)
+                                .statusBarColor(R.color.Blue).autoStatusBarDarkModeEnable(true,0.2f).init();
                         supportFragmentManager.beginTransaction()
                                 .show(moreFragment)
                                 .hide(curriculumFragment)
@@ -106,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         break;
                     case 4:
+                        ImmersionBar.with(MainActivity.this).fitsSystemWindows(true)
+                                .statusBarColor(R.color.Blue).autoStatusBarDarkModeEnable(true,0.2f).init();
                         supportFragmentManager.beginTransaction()
                                 .show(meFragment)
                                 .hide(curriculumFragment)
@@ -130,4 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
